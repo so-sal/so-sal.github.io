@@ -1,7 +1,6 @@
 # ProViDNet: Leveraging Self-Supervised Learning for Medical Image Segmentation
 
-## Abstract
-Recent advancements in self-supervised learning (SSL), emerging as effective imaging feature extractors, enable the effective pretraining of AI models across multiple domains without the need for labels. Specifically, distillation with no label (DINO) has achieved significant advancements in texture representation with knowledge distillation between student and teacher models from distinct image crops without external labels. Despite the rapid advancements, their application in medical imaging still remains under-explored. To address this limitation, in this study, we propose a method ProViDNet that employs DINO v2 pretrained weights with the vision transformer (ViT) backbone and a segmentation module. During the training phase for the segmentation task, the ViT backbone weights are preserved by employing a strategy maintaining a minimal learning rate to keep the pretrained representational capabilities. We validated our model in prostate cancer segmentation tasks using three types of magnetic resonance imaging (MRI) and 3D transrectal ultrasound (TRUS) datasets. Our model demonstrated significant performance improvements by leveraging pretrained DINOv2 weights, compared to the ImageNet pretrained ViT backbone, and exhibited superior performance over state-of-the-art segmentation architectures by achieving a Dice Similarity Coefficient (DSC) that is 0.042, 0.015 and 0.008 higher on T2w, ADC, and DWI sequences respectively, and by 0.029 on the particularly challenging TRUS modality. Our approach underscores the potential of further leveraging foundation models in medical imaging tasks. 
+The code is only for research purposes. If you have any questions regarding how to use this code, feel free to contact Dr.Mirabela Rusu (Mirabela.rusu@stanford.edu).
 
 
 ## Overview
@@ -13,7 +12,7 @@ ProViDNet introduces a novel approach for medical image segmentation by leveragi
 
 
 ## Implementation
-We developed the suggested architecture using the PyTorch framework (version 2.1.0+cu114) on a single NVIDIA RTX A6000 GPU with 48 GB of memory.
+We developed the suggested architecture using the PyTorch framework (version 2.1.0+cu114) on a NVIDIA RTX A6000 GPU with 48 GB of memory.
 
 ### Setup
 To set up the project environment:
@@ -32,8 +31,8 @@ The script expects MRI and TRUS images along with their corresponding labels.
 Modality: 'TRUS' # or T2, ADC, DWI
 paths:
   Image_path: '/path/TRUS/' # ex: patientID_caseID_trus.nii.gz
-  Gland_path: '/path/TRUS_Prostate_Label/' # ex: patientID_caseID__trus_prostate_label.nii.gz
-  Label_path: '/path/TRUS_ROI_Bxconfirmed_Label/' # ex: patientID_caseID__trus_roi_bxconfirmed_label.nii.gz
+  Gland_path: '/path/TRUS_Prostate_Label/' # ex: patientID_caseID_trus_prostate_label.nii.gz
+  Label_path: '/path/TRUS_ROI_Bxconfirmed_Label/' # ex: patientID_caseID_trus_roi_bxconfirmed_label.nii.gz
 
 SplitValidation:
     internal_split: '/path/data_split/splits_final.json'
@@ -46,6 +45,19 @@ SplitValidation:
     #    {"Anon_ID": "patient_ID_CaseID". ...}
     #  ]}
 ```
+
+```
+-/input
+  -/images
+    -- patientID_caseID_trus.nii.gz
+       ....
+  -/gland
+    -- patientID_caseID_trus_prostate_label.nii.gz
+       ....
+  -/cancer
+    -- patientID_caseID_trus_roi_bxconfirmed_label.nii.gz
+       ....
+``` 
 
 ## Training
 ### Usage: train.py
@@ -137,8 +149,7 @@ To map these features to the scale of our target label, we applied a linear inte
 <img src="./Viz.png" width="100%"></img>
 
 
-## Configuration
-Modify `config.yaml` to fit the paths and parameters for your specific dataset and training preferences.
+
 
 ## Contributing
 We welcome contributions and suggestions. Please submit pull requests or open an issue if you have feedback or proposals.
