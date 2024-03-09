@@ -1,5 +1,5 @@
 # ProViDNet: Leveraging Self-Supervised Learning for Medical Image Segmentation
-<img src="./images/ProViDNet.png" width="500px"></img>
+<img src="./ProViDNet.png" width="500px"></img>
 
 
 ## Overview
