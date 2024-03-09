@@ -24,9 +24,10 @@ cd providnet
 pip install -r requirements.txt
 ```
 
-## Data configuration
-To train the model, adjust your configurations in `config.yaml`.
-for image pahts, and split validations
+## Data preparation & configuration
+Your dataset should be organized into directories as specified in `config.yaml`.
+The script expects MRI and TRUS images along with their corresponding labels.
+
 ```yaml
 Modality: 'TRUS' # or T2, ADC, DWI
 paths:
@@ -133,9 +134,8 @@ python evaluate.py \
 ### Visualization of DINOv2 Feature Representations
 To map these features to the scale of our target label, we applied a linear interpolation resizing operation across all embedding dimensions to match the original image shape. After resizing, we applied Uniform Manifold Approximation and Projection (UMAP) for dimensionality reduction, extracting key components for a clearer visualization of our model's learning features.
 
+<img src="./Viz.png" width="100%"></img>
 
-## Data Preparation
-Your dataset should be organized into directories as specified in `config.yaml`. The script expects MRI and TRUS images along with their corresponding labels.
 
 ## Configuration
 Modify `config.yaml` to fit the paths and parameters for your specific dataset and training preferences.
