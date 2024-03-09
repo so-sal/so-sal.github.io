@@ -155,11 +155,10 @@ To map these features to the scale of our target label, we applied a linear inte
 We welcome contributions and suggestions. Please submit pull requests or open an issue if you have feedback or proposals.
 
 ## License
-Specify your project's license here.
+
 
 ## Citation
 If you use ProViDNet in your research, please cite our paper:
-
 
 @article{yourCitation,
     title={ProViDNet: Leveraging Self-Supervised Learning for Medical Image Segmentation},
