@@ -103,7 +103,7 @@ Below are the options and arguments you can use with our command-line interface:
 - `--pretrained_weights`: Path to the pretrained weights, if you are starting from an existing model.
 - `--save_directory`: Directory where the trained model weights will be saved.
 - `--cuda_device`: Specify CUDA visible devices.
-Remember to replace placeholders (e.g., `CUDA_DEVICE`, `MODELNAME`) with your actual configuration values.
+
 
 
 #### Other Encoder architectures
@@ -142,6 +142,9 @@ python evaluate.py \
 - `--save_pred`: Add this flag to save the cancer prediction maps. This flag is not set by default.
 - `--save_pred_directory`: If `--save_pred` is used, this argument specifies the directory where cancer prediction maps will be saved.
 - `--save_heatmap`: Include this flag to enable the saving of heatmaps. By default, heatmaps are not saved.
+
+Arguments identical to those in train.py are omitted.
+
 
 ### Visualization of DINOv2 Feature Representations
 To map these features to the scale of our target label, we applied a linear interpolation resizing operation across all embedding dimensions to match the original image shape. After resizing, we applied Uniform Manifold Approximation and Projection (UMAP) for dimensionality reduction, extracting key components for a clearer visualization of our model's learning features.
